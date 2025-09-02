@@ -9,6 +9,19 @@ const Bookshelf = () => {
   // Initialize state for new book form inputs
   const [newBook, setNewBook] = useState({ title: '', author: '' });
 
+  // Handle input changes for form fields
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setNewBook({ ...newBook, [name]: value });
+  };
+
+  // Handle form submission to add new book
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setBooks([...books, newBook]);
+    setNewBook({ title: '', author: '' });
+  };
+
   return (
     <div className="bookshelfDiv">
       <div className="formDiv">
